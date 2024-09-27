@@ -10,7 +10,7 @@ const Dice = React.memo(({color, rotate, player, data}) => {
   const diceNo = 5;  
   const pileIcon = BackgroundImage.GetImage(color);
   const diceIcon = BackgroundImage.GetImage(diceNo);
-  console.log('Pile Icon:', pileIcon);
+  // console.log('Pile Icon:', pileIcon);
   const arrowAnim = useRef(new Animated.Value(0)).current;
 
   const [diceRolling, setdiceRolling] = useState(false);
