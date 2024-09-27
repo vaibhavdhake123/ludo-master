@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useMemo} from 'react';
-import {Colors} from '../constants/Colors';
-import Pile from './pile';
+import {Colors} from '../../constants/Colors';
+import Pile from '../pile';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {ArrowSpot, SafeSpots, StartSpots} from '../helper/PlotData';
+import {ArrowSpot, SafeSpots, StartSpots} from '../../helper/PlotData';
 import {ArrowRightIcon, StarIcon} from 'react-native-heroicons/outline';
 
 const Cell = ({color, id}) => {

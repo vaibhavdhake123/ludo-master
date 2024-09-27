@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useMemo} from 'react';
-import Cell from './Cell';
+import Cell from '../path/Cell';
 
 const HorizantalPath = React.memo(({cells, color}) => {
   const groupedCells = useMemo(() => {
