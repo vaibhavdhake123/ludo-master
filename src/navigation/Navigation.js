@@ -3,12 +3,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LudoboardScreen from '../screen/LudoboardScreen';
 import HomeScreen from '../screen/HomeScreen';
 import SplashScreen from '../screen/SplashScreen';
+import { navigationRef } from '../helper/NavigationUtil';
 
 const Stack = createNativeStackNavigator();
 
 function Navigation() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator 
       initialRouteName='LudoBoardScreen'
       screenOptions={()=>({

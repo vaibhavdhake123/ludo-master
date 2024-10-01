@@ -1,5 +1,12 @@
-import {Animated, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, { useRef, useState } from 'react';
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import Wrapper from '../components/Wrapper';
 import MenuIcon from '../assets/images/menu.png';
 import StartGame from '../assets/images/start.png';
@@ -12,7 +19,7 @@ import {Plot2Data, Plot1Data, Plot3Data, Plot4Data} from '../helper/PlotData';
 import HorizantalPath from '../components/path/HorizantalPath';
 import FourTriangle from '../components/FourTriangle';
 import {useSelector} from 'react-redux';
-import {useIsFocused} from '@react-navigation/native'
+import {useIsFocused} from '@react-navigation/native';
 import {
   selectDiceTouch,
   selectPlayer1,
@@ -27,18 +34,43 @@ const LudoboardScreen = () => {
   const player3 = useSelector(selectPlayer3);
   const player4 = useSelector(selectPlayer4);
   const isDiceTouch = useSelector(selectDiceTouch);
-  const winner = useSelector(state=>state.game.winner);
-
+  const winner = useSelector(state => state.game.winner);
 
   const isFocused = useIsFocused();
 
-  const [showStartImage, setShowStartImage] = useState(false)
-  const [menuVisible, setmenuVisible] = useState(false)
-  const opacity = useRef(new Animated.Value(0)).current
+  const [showStartImage, setShowStartImage] = useState(false);
+  const [menuVisible, setmenuVisible] = useState(false);
+  const opacity = useRef(new Animated.Value(0)).current;
 
+  // useEffect(() => {
+  //   if (isFocused) {
+  //     setShowStartImage(true);
+  //     const blinkAnimation = Animated.loop(
+  //       Animated.sequence([
+  //         Animated.timing(opacity,{
+  //           toValue:0,
+  //           duration:500,
+  //           useNativeDriver:true,
+  //         }),
+  //         Animated.timing(opacity,{
+  //           toValue:1,
+  //           duration:500,
+  //           useNativeDriver:true,
+  //         }),
+  //       ]),
+  //     );
+  //     blinkAnimation.start();
 
-
-
+  //     const timeout = setTimeout(()=> {
+  //       blinkAnimation.stop();
+  //       setShowStartImage(false);
+  //     },2500);
+  //     return ()=> {
+  //       blinkAnimation.stop();
+  //       clearTimeout(timeout);
+  //     };
+  //   }
+  // }, [isFocused]);
 
   return (
     <Wrapper>
@@ -48,8 +80,8 @@ const LudoboardScreen = () => {
 
       <View style={styles.container}>
         <View style={styles.flexRow}>
-          <Dice color={Colors.green} />
-          <Dice color={Colors.red} rotate />
+          <Dice color={Colors.green} player={2} data={player2} />
+          <Dice color={Colors.yellow} rotate player={3} data={player3}/>
         </View>
 
         <View style={styles.ludoboard}>
@@ -73,8 +105,8 @@ const LudoboardScreen = () => {
         </View>
 
         <View style={styles.flexRow}>
-          <Dice color={Colors.blue} />
-          <Dice color={Colors.yellow} rotate />
+          <Dice color={Colors.red} player={1} data={player1}/>
+          <Dice color={Colors.blue} rotate player={4} data={player4} />
         </View>
       </View>
 
@@ -82,17 +114,13 @@ const LudoboardScreen = () => {
         <Animated.Image
           source={StartGame}
           style={{
-            width:deviceWidth * 0.5,
-            height: deviceHeight *0.2,
+            width: deviceWidth * 0.5,
+            height: deviceHeight * 0.2,
             position: 'absolute',
             opacity,
           }}
         />
       )}
-
-
-
-
     </Wrapper>
   );
 };

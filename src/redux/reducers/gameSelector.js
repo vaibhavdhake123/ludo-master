@@ -1,5 +1,5 @@
-export const selectCurrentPostion = state => state.game.currentPostion;
-export const selectCurrentPlayerChance = state => state.game.PlayerChance;
+export const selectCurrentPostions = state => state.game.currentPostions;
+export const selectCurrentPlayerChance = state => state.game.chancePlayer;
 export const selectDiceRolled = state => state.game.isDiceRolled;
 export const selectDiceNo = state => state.game.diceNo;
 
@@ -9,6 +9,6 @@ export const selectPlayer3 = state => state.game.player3;
 export const selectPlayer4 = state => state.game.player4;
 
 export const selectPocketPileSelection = state => state.game.pileSelectionPlayer;
-export const selectCellSelection = state => state.game.cellselectionPlay;
+export const selectCellSelection = state => state.game.cellSelectionPlayer;
 export const selectDiceTouch = state => state.game.touchDiceBlock
 export const selectFireworks = state => state.game.fireworks;
